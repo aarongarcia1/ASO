@@ -19,9 +19,6 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Llibreria per interpretar Markdown -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
 </head>
 
 
@@ -64,13 +61,24 @@
         Contingut
       </a>
 
+
+      <!--
+        IMPORTANT:
+        Aquest enllaç va directament
+        al SP1.md del repositori de GitHub.
+      -->
+
       <a
         class="nav-link"
-        href="#sp1"
-        onclick="carregarSP1()"
+        href="https://github.com/aarongarcia1/ASO/blob/main/SP1.md"
       >
+
         Veure SP1
-        <span aria-hidden="true">↗</span>
+
+        <span aria-hidden="true">
+          ↗
+        </span>
+
       </a>
 
     </nav>
@@ -92,6 +100,7 @@
     >
 
       <div class="hero-copy">
+
 
         <p class="eyebrow">
 
@@ -121,10 +130,13 @@
         </p>
 
 
+        <!--
+          Enllaç directe a SP1.md
+        -->
+
         <a
           class="button"
-          href="#sp1"
-          onclick="carregarSP1()"
+          href="https://github.com/aarongarcia1/ASO/blob/main/SP1.md"
         >
 
           Explora el treball SP1
@@ -295,8 +307,7 @@
 
         <a
           class="card card-featured"
-          href="#sp1"
-          onclick="carregarSP1()"
+          href="https://github.com/aarongarcia1/ASO/blob/main/SP1.md"
         >
 
 
@@ -435,80 +446,6 @@
     </section>
 
 
-
-    <!-- =========================================
-         DOCUMENTACIÓ SP1
-         ========================================= -->
-
-    <section
-      id="sp1"
-      class="sp1-section"
-    >
-
-
-      <div class="sp1-header">
-
-
-        <a
-          class="sp1-back"
-          href="#projecte"
-          onclick="tornarInici()"
-        >
-
-          ← Tornar a l'inici
-
-        </a>
-
-
-        <p class="eyebrow">
-
-          2n ASIX · SP1
-
-        </p>
-
-
-        <h2>
-
-          Documentació SP1
-
-        </h2>
-
-
-      </div>
-
-
-
-      <!--
-        Aquí JavaScript carregarà
-        automàticament el contingut de SP1.md
-      -->
-
-      <div
-        id="markdown-content"
-        class="markdown-content"
-      >
-
-        <div class="loading">
-
-
-          <div class="loading-spinner"></div>
-
-
-          <p>
-
-            Carregant documentació...
-
-          </p>
-
-
-        </div>
-
-      </div>
-
-
-    </section>
-
-
   </main>
 
 
@@ -524,9 +461,7 @@
   >
 
 
-    <!-- =====================================
-         BOTÓ TANCAR
-         ===================================== -->
+    <!-- BOTÓ TANCAR -->
 
     <button
       class="galeria-tancar"
@@ -540,9 +475,7 @@
 
 
 
-    <!-- =====================================
-         FLETXA ANTERIOR
-         ===================================== -->
+    <!-- FLETXA ANTERIOR -->
 
     <button
       class="galeria-fletxa galeria-anterior"
@@ -556,14 +489,10 @@
 
 
 
-    <!-- =====================================
-         CONTINGUT GALERIA
-         ===================================== -->
+    <!-- CONTINGUT GALERIA -->
 
     <div class="galeria-contingut">
 
-
-      <!-- Número de captura -->
 
       <div
         id="galeria-numero"
@@ -576,13 +505,10 @@
 
 
 
-      <!-- Imatge -->
-
       <div
         id="galeria-imatge-container"
         class="galeria-imatge-container"
       >
-
 
         <img
           id="galeria-imatge"
@@ -592,12 +518,9 @@
           draggable="false"
         >
 
-
       </div>
 
 
-
-      <!-- Botons -->
 
       <div class="galeria-controls">
 
@@ -629,9 +552,7 @@
 
 
 
-    <!-- =====================================
-         FLETXA SEGÜENT
-         ===================================== -->
+    <!-- FLETXA SEGÜENT -->
 
     <button
       class="galeria-fletxa galeria-seguent"
@@ -687,7 +608,7 @@
 
 
   <!-- =========================================
-       JAVASCRIPT EXTERN
+       JAVASCRIPT
        ========================================= -->
 
   <script src="script.js"></script>
