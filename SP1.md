@@ -1,9 +1,3 @@
----
-layout: page
-title: SP1
-permalink: /SP1.html
----
-
 ## Targets
 
 ### Imatge 1: Vista inicial del projecte
