@@ -17,11 +17,15 @@
 
   <title>ASO | Administració de Sistemes Operatius</title>
 
+
+  <!-- CSS -->
+
   <link rel="stylesheet" href="style.css">
 
+
   <!--
-    Llibreria Marked.
-    Serveix per convertir Markdown a HTML.
+    Marked transforma Markdown
+    en HTML.
   -->
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -32,16 +36,19 @@
 <body>
 
 
-  <!-- =========================================
+  <!-- =====================================================
        CAPÇALERA
-       ========================================= -->
+       ===================================================== -->
 
   <header class="site-header">
 
-    <a
+
+    <!-- LOGO -->
+
+    <button
       class="brand"
-      href="./"
-      onclick="tornarInici(); return false;"
+      type="button"
+      onclick="tornarInici()"
       aria-label="ASO, inici"
     >
 
@@ -56,31 +63,35 @@
         ASO<span class="brand-period">.</span>
       </span>
 
-    </a>
+    </button>
 
+
+
+    <!-- MENÚ -->
 
     <nav aria-label="Navegació principal">
 
-      <a
-        href="#projecte"
-        onclick="tornarInici(); return false;"
+
+      <button
+        type="button"
+        onclick="tornarInici()"
       >
         El projecte
-      </a>
+      </button>
 
 
-      <a
-        href="#contingut"
-        onclick="tornarInici(); return false;"
+      <button
+        type="button"
+        onclick="tornarInici()"
       >
         Contingut
-      </a>
+      </button>
 
 
-      <a
+      <button
         class="nav-link"
-        href="?file=SP1.md"
-        onclick="carregarSP1(); return false;"
+        type="button"
+        onclick="carregarSP1()"
       >
 
         Veure SP1
@@ -89,7 +100,8 @@
           ↗
         </span>
 
-      </a>
+      </button>
+
 
     </nav>
 
@@ -97,17 +109,24 @@
 
 
 
+  <!-- =====================================================
+       CONTINGUT PRINCIPAL
+       ===================================================== -->
+
   <main>
 
 
-    <!-- =========================================
+    <!-- =================================================
          HERO
-         ========================================= -->
+         ================================================= -->
 
     <section
       class="hero"
       id="projecte"
     >
+
+
+      <!-- TEXT -->
 
       <div class="hero-copy">
 
@@ -121,6 +140,7 @@
         </p>
 
 
+
         <h1>
 
           Administració de<br>
@@ -132,6 +152,7 @@
         </h1>
 
 
+
         <p class="intro">
 
           Un espai per organitzar i consultar els treballs,
@@ -140,10 +161,17 @@
         </p>
 
 
-        <a
+
+        <!--
+          IMPORTANT:
+          No hi ha href.
+          JavaScript carrega SP1.md.
+        -->
+
+        <button
           class="button"
-          href="?file=SP1.md"
-          onclick="carregarSP1(); return false;"
+          type="button"
+          onclick="carregarSP1()"
         >
 
           Explora el treball SP1
@@ -152,24 +180,27 @@
             →
           </span>
 
-        </a>
+        </button>
+
 
       </div>
 
 
 
-      <!-- =====================================
-           IL·LUSTRACIÓ
-           ===================================== -->
+      <!-- =================================================
+           IL·LUSTRACIÓ TERMINAL
+           ================================================= -->
 
       <div
         class="hero-art"
         aria-hidden="true"
       >
 
+
         <div class="art-orbit orbit-one"></div>
 
         <div class="art-orbit orbit-two"></div>
+
 
 
         <div class="terminal">
@@ -178,7 +209,9 @@
           <div class="terminal-bar">
 
             <i></i>
+
             <i></i>
+
             <i></i>
 
             <span>
@@ -186,6 +219,7 @@
             </span>
 
           </div>
+
 
 
           <div class="terminal-body">
@@ -236,15 +270,18 @@
 
           </div>
 
+
         </div>
 
 
 
         <div class="art-badge">
 
+
           <span>
             01
           </span>
+
 
           <small>
 
@@ -253,18 +290,20 @@
 
           </small>
 
+
         </div>
 
 
       </div>
 
+
     </section>
 
 
 
-    <!-- =========================================
+    <!-- =================================================
          CONTINGUT
-         ========================================= -->
+         ================================================= -->
 
     <section
       class="content-section"
@@ -276,6 +315,7 @@
 
 
         <div>
+
 
           <p class="eyebrow">
 
@@ -290,7 +330,9 @@
 
           </h2>
 
+
         </div>
+
 
 
         <p class="section-note">
@@ -305,17 +347,21 @@
 
 
 
+      <!-- =================================================
+           TARGETES
+           ================================================= -->
+
       <div class="cards">
 
 
-        <!-- =====================================
-             DOCUMENTACIÓ SP1
-             ===================================== -->
+        <!-- ===============================================
+             SP1
+             =============================================== -->
 
-        <a
+        <button
           class="card card-featured"
-          href="?file=SP1.md"
-          onclick="carregarSP1(); return false;"
+          type="button"
+          onclick="carregarSP1()"
         >
 
 
@@ -342,11 +388,13 @@
           </div>
 
 
+
           <p class="card-label">
 
             TREBALL · SP1
 
           </p>
+
 
 
           <h3>
@@ -356,12 +404,14 @@
           </h3>
 
 
+
           <p>
 
             Consulta el procés del treball explicat pas a pas
             amb les captures corresponents.
 
           </p>
+
 
 
           <span class="card-link">
@@ -375,18 +425,18 @@
           </span>
 
 
-        </a>
+        </button>
 
 
 
-        <!-- =====================================
-             GALERIA DE CAPTURES
-             ===================================== -->
+        <!-- ===============================================
+             GALERIA
+             =============================================== -->
 
-        <a
+        <button
           class="card"
-          href="#captures"
-          onclick="obrirGaleria(); return false;"
+          type="button"
+          onclick="obrirGaleria()"
         >
 
 
@@ -413,11 +463,13 @@
           </div>
 
 
+
           <p class="card-label">
 
             RECURSOS
 
           </p>
+
 
 
           <h3>
@@ -427,12 +479,14 @@
           </h3>
 
 
+
           <p>
 
             Consulta totes les captures del treball una per una
             i navega entre elles amb els botons o lliscant.
 
           </p>
+
 
 
           <span class="card-link">
@@ -446,18 +500,19 @@
           </span>
 
 
-        </a>
+        </button>
 
 
       </div>
+
 
     </section>
 
 
 
-    <!-- =========================================
+    <!-- =================================================
          DOCUMENTACIÓ SP1
-         ========================================= -->
+         ================================================= -->
 
     <section
       id="sp1"
@@ -465,18 +520,20 @@
     >
 
 
+      <!-- CAPÇALERA SP1 -->
+
       <div class="sp1-header">
 
 
-        <a
+        <button
           class="sp1-back"
-          href="./"
-          onclick="tornarInici(); return false;"
+          type="button"
+          onclick="tornarInici()"
         >
 
           ← Tornar a l'inici
 
-        </a>
+        </button>
 
 
         <p class="eyebrow">
@@ -498,8 +555,8 @@
 
 
       <!--
-        Aquí JavaScript carregarà
-        automàticament el contingut de SP1.md
+        JavaScript carregarà aquí
+        el contingut real de SP1.md.
       -->
 
       <div
@@ -507,15 +564,22 @@
         class="markdown-content"
       >
 
+
         <div class="loading">
+
 
           <div class="loading-spinner"></div>
 
+
           <p>
+
             Carregant documentació...
+
           </p>
 
+
         </div>
+
 
       </div>
 
@@ -527,9 +591,9 @@
 
 
 
-  <!-- =========================================
+  <!-- =====================================================
        GALERIA DE CAPTURES
-       ========================================= -->
+       ===================================================== -->
 
   <div
     id="galeria"
@@ -542,6 +606,7 @@
 
     <button
       class="galeria-tancar"
+      type="button"
       onclick="tancarGaleria()"
       aria-label="Tancar galeria"
     >
@@ -552,10 +617,11 @@
 
 
 
-    <!-- FLETXA ANTERIOR -->
+    <!-- ANTERIOR -->
 
     <button
       class="galeria-fletxa galeria-anterior"
+      type="button"
       onclick="capturaAnterior()"
       aria-label="Captura anterior"
     >
@@ -566,10 +632,12 @@
 
 
 
-    <!-- CONTINGUT -->
+    <!-- CONTINGUT GALERIA -->
 
     <div class="galeria-contingut">
 
+
+      <!-- NÚMERO -->
 
       <div
         id="galeria-numero"
@@ -582,10 +650,13 @@
 
 
 
+      <!-- IMATGE -->
+
       <div
         id="galeria-imatge-container"
         class="galeria-imatge-container"
       >
+
 
         <img
           id="galeria-imatge"
@@ -595,15 +666,19 @@
           draggable="false"
         >
 
+
       </div>
 
 
+
+      <!-- CONTROLS -->
 
       <div class="galeria-controls">
 
 
         <button
           class="galeria-boto"
+          type="button"
           onclick="capturaAnterior()"
         >
 
@@ -612,8 +687,10 @@
         </button>
 
 
+
         <button
           class="galeria-boto"
+          type="button"
           onclick="capturaSeguent()"
         >
 
@@ -629,10 +706,11 @@
 
 
 
-    <!-- FLETXA SEGÜENT -->
+    <!-- SEGÜENT -->
 
     <button
       class="galeria-fletxa galeria-seguent"
+      type="button"
       onclick="capturaSeguent()"
       aria-label="Captura següent"
     >
@@ -646,22 +724,23 @@
 
 
 
-  <!-- =========================================
+  <!-- =====================================================
        FOOTER
-       ========================================= -->
+       ===================================================== -->
 
   <footer>
 
 
-    <a
+    <button
       class="footer-brand"
-      href="./"
-      onclick="tornarInici(); return false;"
+      type="button"
+      onclick="tornarInici()"
     >
 
       ASO<span class="brand-period">.</span>
 
-    </a>
+    </button>
+
 
 
     <p>
@@ -671,24 +750,25 @@
     </p>
 
 
-    <a
+
+    <button
       class="footer-top"
-      href="./"
-      onclick="tornarInici(); return false;"
+      type="button"
+      onclick="tornarInici()"
     >
 
       Tornar a l'inici ↑
 
-    </a>
+    </button>
 
 
   </footer>
 
 
 
-  <!-- =========================================
+  <!-- =====================================================
        JAVASCRIPT
-       ========================================= -->
+       ===================================================== -->
 
   <script src="script.js"></script>
 
