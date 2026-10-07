@@ -19,6 +19,13 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!--
+    Llibreria Marked.
+    Serveix per convertir Markdown a HTML.
+  -->
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 </head>
 
 
@@ -33,7 +40,8 @@
 
     <a
       class="brand"
-      href="#projecte"
+      href="./"
+      onclick="tornarInici(); return false;"
       aria-label="ASO, inici"
     >
 
@@ -53,24 +61,26 @@
 
     <nav aria-label="Navegació principal">
 
-      <a href="#projecte">
+      <a
+        href="#projecte"
+        onclick="tornarInici(); return false;"
+      >
         El projecte
       </a>
 
-      <a href="#contingut">
+
+      <a
+        href="#contingut"
+        onclick="tornarInici(); return false;"
+      >
         Contingut
       </a>
 
 
-      <!--
-        IMPORTANT:
-        Aquest enllaç va directament
-        al SP1.md del repositori de GitHub.
-      -->
-
       <a
         class="nav-link"
-        href="https://github.com/aarongarcia1/ASO/blob/main/SP1.md"
+        href="?file=SP1.md"
+        onclick="carregarSP1(); return false;"
       >
 
         Veure SP1
@@ -130,13 +140,10 @@
         </p>
 
 
-        <!--
-          Enllaç directe a SP1.md
-        -->
-
         <a
           class="button"
-          href="https://github.com/aarongarcia1/ASO/blob/main/SP1.md"
+          href="?file=SP1.md"
+          onclick="carregarSP1(); return false;"
         >
 
           Explora el treball SP1
@@ -307,7 +314,8 @@
 
         <a
           class="card card-featured"
-          href="https://github.com/aarongarcia1/ASO/blob/main/SP1.md"
+          href="?file=SP1.md"
+          onclick="carregarSP1(); return false;"
         >
 
 
@@ -446,6 +454,75 @@
     </section>
 
 
+
+    <!-- =========================================
+         DOCUMENTACIÓ SP1
+         ========================================= -->
+
+    <section
+      id="sp1"
+      class="sp1-section"
+    >
+
+
+      <div class="sp1-header">
+
+
+        <a
+          class="sp1-back"
+          href="./"
+          onclick="tornarInici(); return false;"
+        >
+
+          ← Tornar a l'inici
+
+        </a>
+
+
+        <p class="eyebrow">
+
+          2n ASIX · SP1.md
+
+        </p>
+
+
+        <h2>
+
+          Documentació SP1
+
+        </h2>
+
+
+      </div>
+
+
+
+      <!--
+        Aquí JavaScript carregarà
+        automàticament el contingut de SP1.md
+      -->
+
+      <div
+        id="markdown-content"
+        class="markdown-content"
+      >
+
+        <div class="loading">
+
+          <div class="loading-spinner"></div>
+
+          <p>
+            Carregant documentació...
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
   </main>
 
 
@@ -489,7 +566,7 @@
 
 
 
-    <!-- CONTINGUT GALERIA -->
+    <!-- CONTINGUT -->
 
     <div class="galeria-contingut">
 
@@ -578,7 +655,8 @@
 
     <a
       class="footer-brand"
-      href="#projecte"
+      href="./"
+      onclick="tornarInici(); return false;"
     >
 
       ASO<span class="brand-period">.</span>
@@ -595,7 +673,8 @@
 
     <a
       class="footer-top"
-      href="#projecte"
+      href="./"
+      onclick="tornarInici(); return false;"
     >
 
       Tornar a l'inici ↑
