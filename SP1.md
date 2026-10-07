@@ -1,6 +1,6 @@
 # SP1
 
-## Imatges de la carpeta `imatges`
+## Targets
 
 ### Imatge 1: Vista inicial del projecte
 En aquesta primera captura es veu el punt de partida del treball, amb l'estructura bàsica del repositori i la ubicació dels fitxers que s'han d'utilitzar.
