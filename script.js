@@ -1,15 +1,43 @@
-/* =========================================
-   SP1.MD
-   ========================================= */
+/* =========================================================
+   ASO · SCRIPT PRINCIPAL
+   ========================================================= */
+
+
+/* =========================================================
+   CONFIGURACIÓ
+   ========================================================= */
+
+
+/*
+ * URL del fitxer SP1.md al repositori.
+ *
+ * NO obre GitHub.
+ *
+ * JavaScript llegeix el fitxer directament
+ * i després el mostra dins de la nostra pàgina.
+ */
+
+const URL_SP1 =
+  "https://raw.githubusercontent.com/aarongarcia1/ASO/main/SP1.md";
+
+
+/*
+ * Indica si SP1.md ja s'ha carregat.
+ */
 
 let sp1Carregat = false;
 
 
-/*
- * Carregar SP1.md
- */
+
+/* =========================================================
+   CARREGAR SP1.MD
+   ========================================================= */
 
 async function carregarSP1() {
+
+  /*
+   * Elements de la pàgina
+   */
 
   const seccioSP1 =
     document.getElementById("sp1");
@@ -19,7 +47,7 @@ async function carregarSP1() {
 
 
   /*
-   * Mostrar secció SP1
+   * Mostrar SP1
    */
 
   seccioSP1.classList.add("visible");
@@ -37,8 +65,32 @@ async function carregarSP1() {
 
 
   /*
-   * Si ja s'ha carregat SP1.md,
-   * no el tornem a carregar.
+   * Canviar la URL.
+   *
+   * No utilitzem #sp1.
+   *
+   * La URL quedarà:
+   *
+   * /ASO/?file=SP1.md
+   */
+
+  const novaURL =
+    window.location.pathname +
+    "?file=SP1.md";
+
+
+  history.pushState(
+    {
+      pagina: "SP1.md"
+    },
+    "",
+    novaURL
+  );
+
+
+  /*
+   * Si ja està carregat,
+   * no el tornem a descarregar.
    */
 
   if (sp1Carregat) {
@@ -49,25 +101,50 @@ async function carregarSP1() {
     });
 
     return;
+
   }
 
 
   try {
 
     /*
-     * Agafar SP1.md directament
-     * des de l'API de GitHub
+     * Mostrar carregant
      */
 
-    const resposta = await fetch(
-      "https://api.github.com/repos/aarongarcia1/ASO/contents/SP1.md"
-    );
+    contingut.innerHTML = `
 
+      <div class="loading">
+
+        <div class="loading-spinner"></div>
+
+        <p>
+          Carregant SP1.md...
+        </p>
+
+      </div>
+
+    `;
+
+
+    /*
+     * Agafar SP1.md des de GitHub.
+     *
+     * raw.githubusercontent.com retorna
+     * només el contingut del fitxer.
+     */
+
+    const resposta =
+      await fetch(URL_SP1);
+
+
+    /*
+     * Comprovar resposta
+     */
 
     if (!resposta.ok) {
 
       throw new Error(
-        "No s'ha pogut trobar SP1.md a GitHub"
+        "No s'ha pogut carregar SP1.md"
       );
 
     }
@@ -75,51 +152,35 @@ async function carregarSP1() {
 
     /*
      * Convertir la resposta
-     * a JSON
+     * a text.
      */
 
-    const dades =
-      await resposta.json();
+    let markdown =
+      await resposta.text();
 
 
     /*
-     * GitHub retorna el contingut
-     * codificat en Base64.
-     */
-
-    const contingutBase64 =
-      dades.content.replace(/\n/g, "");
-
-
-    /*
-     * Convertir Base64 a text
+     * Eliminar el Front Matter de Jekyll
+     * si encara existeix.
      *
-     * Aquesta forma permet
-     * també caràcters especials
-     * del català.
+     * Exemple:
+     *
+     * ---
+     * layout: page
+     * title: SP1
+     * permalink: /SP1.html
+     * ---
      */
 
-    const binari =
-      atob(contingutBase64);
-
-
-    const bytes =
-      Uint8Array.from(
-        binari,
-        caracter => caracter.charCodeAt(0)
+    markdown =
+      markdown.replace(
+        /^---[\s\S]*?---\s*/,
+        ""
       );
-
-
-    const markdown =
-      new TextDecoder("utf-8")
-        .decode(bytes);
 
 
     /*
      * Convertir Markdown a HTML
-     *
-     * Necessita la llibreria Marked
-     * carregada a index.html.
      */
 
     contingut.innerHTML =
@@ -134,7 +195,286 @@ async function carregarSP1() {
 
 
     /*
-     * Tornar a l'inici de la secció
+     * Tornar al principi de SP1
+     */
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Error carregant SP1.md:",
+      error
+    );
+
+
+    /*
+     * Mostrar error a la pàgina
+     */
+
+    contingut.innerHTML = `
+
+      <div class="sp1-error">
+
+        <h3>
+          Error carregant SP1.md
+        </h3>
+
+        <p>
+          No s'ha pogut carregar el fitxer
+          <strong>SP1.md</strong>.
+        </p>
+
+        <p>
+          Comprova que el fitxer existeixi
+          al repositori.
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   TORNAR A L'INICI
+   ========================================================= */
+
+function tornarInici() {
+
+  /*
+   * Amagar SP1
+   */
+
+  document
+    .getElementById("sp1")
+    .classList.remove("visible");
+
+
+  /*
+   * Tornar a mostrar portada
+   */
+
+  document.getElementById("projecte")
+    .style.display = "";
+
+
+  document.getElementById("contingut")
+    .style.display = "";
+
+
+  /*
+   * Eliminar el ?file=SP1.md
+   */
+
+  history.pushState(
+    {
+      pagina: "inici"
+    },
+    "",
+    window.location.pathname
+  );
+
+
+  /*
+   * Tornar a dalt
+   */
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+
+/* =========================================================
+   BOTÓ ENRERE DEL NAVEGADOR
+   ========================================================= */
+
+window.addEventListener(
+  "popstate",
+  function() {
+
+    /*
+     * Comprovar si estem a SP1
+     */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const fitxer =
+      params.get("file");
+
+
+    if (
+      fitxer === "SP1.md"
+    ) {
+
+      /*
+       * Obrir SP1 sense tornar
+       * a modificar l'historial.
+       */
+
+      carregarSP1SenseHistorial();
+
+    } else {
+
+      /*
+       * Tornar a inici.
+       */
+
+      document
+        .getElementById("sp1")
+        .classList.remove("visible");
+
+
+      document.getElementById("projecte")
+        .style.display = "";
+
+
+      document.getElementById("contingut")
+        .style.display = "";
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   CARREGAR SP1 SENSE MODIFICAR URL
+   ========================================================= */
+
+async function carregarSP1SenseHistorial() {
+
+  const seccioSP1 =
+    document.getElementById("sp1");
+
+  const contingut =
+    document.getElementById("markdown-content");
+
+
+  /*
+   * Mostrar SP1
+   */
+
+  seccioSP1.classList.add("visible");
+
+
+  /*
+   * Amagar portada
+   */
+
+  document.getElementById("projecte")
+    .style.display = "none";
+
+  document.getElementById("contingut")
+    .style.display = "none";
+
+
+  /*
+   * Si ja està carregat,
+   * no cal tornar-lo a carregar.
+   */
+
+  if (sp1Carregat) {
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+    return;
+
+  }
+
+
+  try {
+
+    contingut.innerHTML = `
+
+      <div class="loading">
+
+        <div class="loading-spinner"></div>
+
+        <p>
+          Carregant SP1.md...
+        </p>
+
+      </div>
+
+    `;
+
+
+    /*
+     * Carregar Markdown
+     */
+
+    const resposta =
+      await fetch(URL_SP1);
+
+
+    if (!resposta.ok) {
+
+      throw new Error(
+        "No s'ha pogut carregar SP1.md"
+      );
+
+    }
+
+
+    /*
+     * Convertir a text
+     */
+
+    let markdown =
+      await resposta.text();
+
+
+    /*
+     * Eliminar Front Matter
+     */
+
+    markdown =
+      markdown.replace(
+        /^---[\s\S]*?---\s*/,
+        ""
+      );
+
+
+    /*
+     * Convertir Markdown a HTML
+     */
+
+    contingut.innerHTML =
+      marked.parse(markdown);
+
+
+    sp1Carregat = true;
+
+
+    /*
+     * Tornar a dalt
      */
 
     window.scrollTo({
@@ -157,14 +497,7 @@ async function carregarSP1() {
         </h3>
 
         <p>
-          No s'ha pogut carregar la documentació
-          des de GitHub.
-        </p>
-
-        <p>
-          Comprova que el fitxer
-          <strong>SP1.md</strong>
-          existeixi al repositori.
+          No s'ha pogut carregar la documentació.
         </p>
 
       </div>
@@ -177,45 +510,13 @@ async function carregarSP1() {
 
 
 
-/* =========================================
-   TORNAR A L'INICI
-   ========================================= */
-
-function tornarInici() {
-
-  document
-    .getElementById("sp1")
-    .classList.remove("visible");
-
-
-  document.getElementById("projecte")
-    .style.display = "";
-
-
-  document.getElementById("contingut")
-    .style.display = "";
-
-
-  /*
-   * Tornar al principi de la pàgina
-   */
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-}
-
-
-
-/* =========================================
+/* =========================================================
    GALERIA DE CAPTURES
-   ========================================= */
+   ========================================================= */
 
 
 /*
- * Llista de captures
+ * Crear llista de captures
  *
  * 1.png
  * 2.png
@@ -226,7 +527,11 @@ function tornarInici() {
 const captures = [];
 
 
-for (let i = 1; i <= 14; i++) {
+for (
+  let i = 1;
+  i <= 14;
+  i++
+) {
 
   captures.push(
     `imatges/${i}.png`
@@ -236,20 +541,16 @@ for (let i = 1; i <= 14; i++) {
 
 
 /*
- * Captura actual
- *
- * 0 = primera
- * 1 = segona
- * etc.
+ * Índex de la captura actual.
  */
 
 let capturaActual = 0;
 
 
 
-/* =========================================
+/* =========================================================
    OBRIR GALERIA
-   ========================================= */
+   ========================================================= */
 
 function obrirGaleria() {
 
@@ -258,7 +559,7 @@ function obrirGaleria() {
 
 
   /*
-   * Mostrar galeria
+   * Obrir galeria
    */
 
   galeria.classList.add("activa");
@@ -271,8 +572,7 @@ function obrirGaleria() {
 
 
   /*
-   * Començar sempre per
-   * la primera captura
+   * Començar per la primera
    */
 
   capturaActual = 0;
@@ -282,7 +582,7 @@ function obrirGaleria() {
 
 
   /*
-   * Evitar scroll del fons
+   * Bloquejar scroll del fons
    */
 
   document.body.style.overflow =
@@ -292,9 +592,9 @@ function obrirGaleria() {
 
 
 
-/* =========================================
+/* =========================================================
    TANCAR GALERIA
-   ========================================= */
+   ========================================================= */
 
 function tancarGaleria() {
 
@@ -303,7 +603,7 @@ function tancarGaleria() {
 
 
   /*
-   * Amagar galeria
+   * Tancar
    */
 
   galeria.classList.remove("activa");
@@ -326,9 +626,9 @@ function tancarGaleria() {
 
 
 
-/* =========================================
-   ACTUALITZAR CAPTURA
-   ========================================= */
+/* =========================================================
+   ACTUALITZAR GALERIA
+   ========================================================= */
 
 function actualitzarGaleria() {
 
@@ -345,56 +645,58 @@ function actualitzarGaleria() {
 
 
   /*
-   * Fer desaparèixer una mica
-   * la imatge actual
+   * Fer transició
    */
 
   imatge.style.opacity = "0";
 
 
-  setTimeout(function() {
+  setTimeout(
+    function() {
 
 
-    /*
-     * Canviar la imatge
-     */
+      /*
+       * Canviar imatge
+       */
 
-    imatge.src =
-      captures[capturaActual];
-
-
-    /*
-     * Actualitzar text alternatiu
-     */
-
-    imatge.alt =
-      `Captura ${capturaActual + 1} del treball SP1`;
+      imatge.src =
+        captures[capturaActual];
 
 
-    /*
-     * Actualitzar número
-     */
+      /*
+       * Actualitzar ALT
+       */
 
-    numero.textContent =
-      `${capturaActual + 1} / ${captures.length}`;
-
-
-    /*
-     * Tornar a mostrar la imatge
-     */
-
-    imatge.style.opacity = "1";
+      imatge.alt =
+        `Captura ${capturaActual + 1} del treball SP1`;
 
 
-  }, 100);
+      /*
+       * Actualitzar contador
+       */
+
+      numero.textContent =
+        `${capturaActual + 1} / ${captures.length}`;
+
+
+      /*
+       * Mostrar imatge
+       */
+
+      imatge.style.opacity = "1";
+
+
+    },
+    100
+  );
 
 }
 
 
 
-/* =========================================
+/* =========================================================
    CAPTURA SEGÜENT
-   ========================================= */
+   ========================================================= */
 
 function capturaSeguent() {
 
@@ -402,8 +704,7 @@ function capturaSeguent() {
 
 
   /*
-   * Si arribem a la 15,
-   * tornem a la primera.
+   * Tornar a la primera
    */
 
   if (
@@ -421,9 +722,9 @@ function capturaSeguent() {
 
 
 
-/* =========================================
+/* =========================================================
    CAPTURA ANTERIOR
-   ========================================= */
+   ========================================================= */
 
 function capturaAnterior() {
 
@@ -431,12 +732,12 @@ function capturaAnterior() {
 
 
   /*
-   * Si estem a la primera
-   * i anem enrere,
-   * passem a l'última.
+   * Anar a l'última
    */
 
-  if (capturaActual < 0) {
+  if (
+    capturaActual < 0
+  ) {
 
     capturaActual =
       captures.length - 1;
@@ -450,9 +751,9 @@ function capturaAnterior() {
 
 
 
-/* =========================================
+/* =========================================================
    TECLAT
-   ========================================= */
+   ========================================================= */
 
 document.addEventListener(
   "keydown",
@@ -466,7 +767,7 @@ document.addEventListener(
 
 
     /*
-     * Si la galeria no està oberta,
+     * Si la galeria està tancada,
      * ignorem les tecles.
      */
 
@@ -482,7 +783,7 @@ document.addEventListener(
 
 
     /*
-     * FLETXA DRETA
+     * Dreta
      */
 
     if (
@@ -495,7 +796,7 @@ document.addEventListener(
 
 
     /*
-     * FLETXA ESQUERRA
+     * Esquerra
      */
 
     if (
@@ -508,7 +809,7 @@ document.addEventListener(
 
 
     /*
-     * ESC
+     * Escape
      */
 
     if (
@@ -524,9 +825,9 @@ document.addEventListener(
 
 
 
-/* =========================================
-   SWIPE EN MÒBIL
-   ========================================= */
+/* =========================================================
+   SWIPE MÒBIL
+   ========================================================= */
 
 let touchInicialX = 0;
 
@@ -541,7 +842,7 @@ const zonaImatge =
 
 
 /*
- * Quan comencem a tocar
+ * Inici del toc
  */
 
 zonaImatge.addEventListener(
@@ -560,7 +861,7 @@ zonaImatge.addEventListener(
 
 
 /*
- * Quan deixem de tocar
+ * Final del toc
  */
 
 zonaImatge.addEventListener(
@@ -582,7 +883,7 @@ zonaImatge.addEventListener(
 
 
 /*
- * Comprovar direcció del swipe
+ * Gestionar direcció
  */
 
 function gestionarSwipe() {
@@ -620,21 +921,15 @@ function gestionarSwipe() {
 
 
 
-/* =========================================
+/* =========================================================
    TANCAR CLICANT FORA
-   ========================================= */
+   ========================================================= */
 
 document
   .getElementById("galeria")
   .addEventListener(
     "click",
     function(event) {
-
-
-      /*
-       * Només tanquem si es clica
-       * sobre el fons.
-       */
 
       if (
         event.target === this
@@ -649,22 +944,24 @@ document
 
 
 
-/* =========================================
-   #SP1
-   ========================================= */
+/* =========================================================
+   CARREGAR SP1 SI ENTREM AMB ?file=SP1.md
+   ========================================================= */
 
-/*
- * Si entrem directament a:
- *
- * https://aarongarcia1.github.io/ASO/#sp1
- *
- * carreguem automàticament SP1.md.
- */
+const parametres =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const fitxerInicial =
+  parametres.get("file");
+
 
 if (
-  window.location.hash === "#sp1"
+  fitxerInicial === "SP1.md"
 ) {
 
-  carregarSP1();
+  carregarSP1SenseHistorial();
 
 }
