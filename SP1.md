@@ -1,71 +1,61 @@
-## Targets
 
-### Imatge 1: Vista inicial del projecte
-En aquesta primera captura es veu el punt de partida del treball, amb l'estructura bàsica del repositori i la ubicació dels fitxers que s'han d'utilitzar.
+## Configuració d'un servei i un target de systemd
 
+### Captura 1
+S'obre amb `nano` el fitxer `/etc/systemd/system/aaron.target`. Aquest fitxer permet definir un target propi de systemd, és a dir, un conjunt d'unitats que es poden iniciar com un estat del sistema.
 ![1](imatges/1.png)
 
-### Imatge 2: Exploració de la carpeta `ASO`
-Aquí es mostra com s'ha revisat el contingut de la carpeta del projecte per identificar els elements necessaris per al desenvolupament i la documentació.
-
+### Captura 2
+Es configura `aaron.target`: s'indica que és un target personalitzat, que requereix `multi-user.target` i que s'inicia després d'aquest, i es permet aïllar-lo amb `AllowIsolate=yes`. Així es defineix la relació amb el target multiusuari i es pot canviar a aquest estat de manera aïllada.
 ![2](imatges/2.png)
 
-### Imatge 3: Localització de les imatges
-En aquesta imatge es confirma que la carpeta `imatges` conté els captures que després s'incorporaran al document final.
-
+### Captura 3
+S'obre el fitxer `/usr/local/bin/aaron-script.sh`, que serà l'script que executarà el servei configurat més endavant.
 ![3](imatges/3.png)
 
-### Imatge 4: Revisió de fitxers disponibles
-Es visualitza la llista de documents del projecte, cosa que permet tenir una visió general de les parts que formen la tasca.
-
+### Captura 4
+S'escriu el contingut de l'script. Les ordres `echo` hi afegeixen un missatge d'inici, la data (`date`) i l'usuari efectiu (`whoami`) al fitxer `/var/log/aaron-startup.log`. L'objectiu és deixar un registre senzill de cada execució.
 ![4](imatges/4.png)
 
-### Imatge 5: Identificació del fitxer principal
-Aquí es localitza el document principal on s'ha d'inserir la documentació i les captures del procés realitzat.
-
+### Captura 5
+S'executa `sudo chmod +x /usr/local/bin/aaron-script.sh` per donar permís d'execució a l'script. Aquest pas permet que systemd el pugui iniciar com un programa.
 ![5](imatges/5.png)
 
-### Imatge 6: Preparació del document `SP1.md`
-La captura mostra la preparació del fitxer de treball, abans d'inserir les imatges i redactar la explicació corresponent.
-
+### Captura 6
+Es crea o s'edita `/etc/systemd/system/aaron.service`, el fitxer d'unitat que descriu com ha d'executar systemd l'script preparat a les captures anteriors.
 ![6](imatges/6.png)
 
-### Imatge 7: Inserció de contingut visual
-En aquest moment s'està incorporant al document el material gràfic que explica el desenvolupament pas a pas.
-
+### Captura 7
+Es recarrega la configuració amb `systemctl daemon-reload` i s'habilita `aaron.service`. La sortida confirma la creació de l'enllaç del servei dins de `aaron.target.wants`. Després, `systemctl set-default aaron.target` estableix aquest target com a predeterminat i crea l'enllaç corresponent a `default.target`.
 ![7](imatges/7.png)
 
-### Imatge 8: Estructuració del document
-Es veu com la documentació es va ordenant en apartats per facilitar la llegibilitat i la comprensió del treball.
-
+### Captura 8
+Es consulta el target predeterminat amb `systemctl get-default` i la resposta és `aaron.target`. Això comprova que s'ha aplicat el canvi fet a la captura anterior.
 ![8](imatges/8.png)
 
-### Imatge 9: Continuació del procés de documentació
-Aquesta imatge mostra la part següent de la feina, on es va completant la informació del projecte amb captures i descripcions.
-
+### Captura 9
+Es torna a consultar el target predeterminat i es revisa `aaron.service` amb `systemctl status`. La sortida indica que el servei està carregat i habilitat, i apareix com a `active (exited)` amb `status=0/SUCCESS`: ha acabat correctament i systemd el manté marcat com a actiu. També es mostren missatges d'inici i finalització; la captura no permet confirmar el contingut del fitxer de registre.
 ![9](imatges/9.png)
 
-### Imatge 10: Control de la feina realitzada
-Es reflecteix el seguiment del procés, comprovant que cada pas del treball ja està documentat i organitzat.
-
+### Captura 10
+Es mostra la configuració de `aaron.service`. `Type=oneshot` indica que executa una tasca puntual; `ExecStart` assenyala l'script, i `User=root` indica que s'executa com a administrador. `RemainAfterExit=yes` fa que systemd el consideri actiu encara que l'script ja hagi acabat. A `[Install]`, `WantedBy=aaron.target` vincula el servei amb el target personalitzat quan s'habilita.
 ![10](imatges/10.png)
 
-### Imatge 11: Verificació del contingut
-En aquesta captura es revisa que totes les imatges i textos estiguin correctament ubicats dins del document final.
-
+### Captura 11
+S'introdueix `sudo reboot` per reiniciar l'equip i comprovar el comportament de la configuració durant un nou inici. En aquesta captura encara no es mostra el resultat del reinici.
 ![11](imatges/11.png)
 
-### Imatge 12: Revisió final del material
-Es comprova que la documentació té el contingut necessari abans de donar-la per acabada.
-
+### Captura 12
+Es mostra un arbre de dependències que té `aaron.service` com a node principal, seguit d'unitats del sistema com ara `system.slice` i `sysinit.target`. Serveix per consultar les dependències relacionades amb el servei; la captura no mostra l'ordre que ha generat aquesta sortida.
 ![12](imatges/12.png)
 
-### Imatge 13: Document quasi finalitzat
-Aquesta imatge mostra un estat avançat del treball, amb la major part del contingut ja incorporat i ordenat.
-
+### Captura 13
+Es mostra l'arbre de dependències de `aaron.target`. S'hi veu `aaron.service` com una de les seves unitats i també `multi-user.target`, juntament amb altres serveis. Això permet comprovar visualment la composició del target configurat.
 ![13](imatges/13.png)
 
-### Imatge 14: Document final
-La captura final representa el resultat del procés: un document amb totes les captures i una explicació clara del que s'ha fet.
-
+### Captura 14
+S'escriu l'ordre `sudo systemctl list-dependencies aaron.service`, que demana llistar les dependències del servei. La captura acaba abans de mostrar-ne la sortida, de manera que no se'n pot confirmar el resultat. Aquesta consulta està relacionada amb l'arbre de dependències de la captura 12.
 ![14](imatges/14.png)
+
+## Conclusió
+S'ha preparat un script que registra informació en un fitxer de registre i s'ha configurat com un servei `systemd` associat a un target personalitzat. També s'ha habilitat el servei, s'ha establert `aaron.target` com a predeterminat i se n'han consultat l'estat i les dependències.
