@@ -55,35 +55,71 @@ async function carregarSP1() {
   try {
 
     /*
-     * Agafar SP1.md
+     * Agafar SP1.md directament
+     * des de l'API de GitHub
      */
 
-    const resposta =
-      await fetch("SP1.md");
+    const resposta = await fetch(
+      "https://api.github.com/repos/aarongarcia1/ASO/contents/SP1.md"
+    );
 
 
     if (!resposta.ok) {
 
       throw new Error(
-        "No s'ha pogut trobar SP1.md"
+        "No s'ha pogut trobar SP1.md a GitHub"
       );
 
     }
 
 
     /*
-     * Convertir el fitxer a text
+     * Convertir la resposta
+     * a JSON
      */
 
+    const dades =
+      await resposta.json();
+
+
+    /*
+     * GitHub retorna el contingut
+     * codificat en Base64.
+     */
+
+    const contingutBase64 =
+      dades.content.replace(/\n/g, "");
+
+
+    /*
+     * Convertir Base64 a text
+     *
+     * Aquesta forma permet
+     * també caràcters especials
+     * del català.
+     */
+
+    const binari =
+      atob(contingutBase64);
+
+
+    const bytes =
+      Uint8Array.from(
+        binari,
+        caracter => caracter.charCodeAt(0)
+      );
+
+
     const markdown =
-      await resposta.text();
+      new TextDecoder("utf-8")
+        .decode(bytes);
 
 
     /*
      * Convertir Markdown a HTML
      *
      * Necessita la llibreria Marked
-     * que tens carregada a index.html.
+     * carregada a index.html.
      */
 
     contingut.innerHTML =
@@ -121,15 +157,14 @@ async function carregarSP1() {
         </h3>
 
         <p>
-          No s'ha pogut carregar el fitxer
-          <strong>SP1.md</strong>.
+          No s'ha pogut carregar la documentació
+          des de GitHub.
         </p>
 
         <p>
-          Comprova que
+          Comprova que el fitxer
           <strong>SP1.md</strong>
-          estigui a la mateixa carpeta que
-          <strong>index.html</strong>.
+          existeixi al repositori.
         </p>
 
       </div>
@@ -159,6 +194,16 @@ function tornarInici() {
 
   document.getElementById("contingut")
     .style.display = "";
+
+
+  /*
+   * Tornar al principi de la pàgina
+   */
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 }
 
@@ -191,7 +236,7 @@ for (let i = 1; i <= 14; i++) {
 
 
 /*
- * Captura que estem veient actualment
+ * Captura actual
  *
  * 0 = primera
  * 1 = segona
@@ -226,7 +271,8 @@ function obrirGaleria() {
 
 
   /*
-   * Començar sempre per la primera captura
+   * Començar sempre per
+   * la primera captura
    */
 
   capturaActual = 0;
@@ -236,8 +282,7 @@ function obrirGaleria() {
 
 
   /*
-   * Evitar que el fons de la pàgina
-   * faci scroll mentre la galeria està oberta.
+   * Evitar scroll del fons
    */
 
   document.body.style.overflow =
@@ -328,12 +373,6 @@ function actualitzarGaleria() {
 
     /*
      * Actualitzar número
-     *
-     * Exemple:
-     *
-     * 1 / 14
-     * 2 / 14
-     * ...
      */
 
     numero.textContent =
@@ -444,8 +483,6 @@ document.addEventListener(
 
     /*
      * FLETXA DRETA
-     *
-     * Següent captura
      */
 
     if (
@@ -459,8 +496,6 @@ document.addEventListener(
 
     /*
      * FLETXA ESQUERRA
-     *
-     * Captura anterior
      */
 
     if (
@@ -474,8 +509,6 @@ document.addEventListener(
 
     /*
      * ESC
-     *
-     * Tancar galeria
      */
 
     if (
@@ -492,7 +525,7 @@ document.addEventListener(
 
 
 /* =========================================
-   DESLIZAR / SWIPE
+   SWIPE EN MÒBIL
    ========================================= */
 
 let touchInicialX = 0;
@@ -508,7 +541,7 @@ const zonaImatge =
 
 
 /*
- * Quan comencem a tocar la pantalla
+ * Quan comencem a tocar
  */
 
 zonaImatge.addEventListener(
@@ -527,7 +560,7 @@ zonaImatge.addEventListener(
 
 
 /*
- * Quan deixem de tocar la pantalla
+ * Quan deixem de tocar
  */
 
 zonaImatge.addEventListener(
@@ -549,7 +582,7 @@ zonaImatge.addEventListener(
 
 
 /*
- * Comprovar direcció del moviment
+ * Comprovar direcció del swipe
  */
 
 function gestionarSwipe() {
@@ -559,11 +592,7 @@ function gestionarSwipe() {
 
 
   /*
-   * Deslitzar cap a l'esquerra
-   *
-   * ← ← ←
-   *
-   * Següent
+   * Esquerra = següent
    */
 
   if (
@@ -576,11 +605,7 @@ function gestionarSwipe() {
 
 
   /*
-   * Deslitzar cap a la dreta
-   *
-   * → → →
-   *
-   * Anterior
+   * Dreta = anterior
    */
 
   if (
@@ -596,7 +621,7 @@ function gestionarSwipe() {
 
 
 /* =========================================
-   TANCAR FENT CLIC FORA DE LA IMATGE
+   TANCAR CLICANT FORA
    ========================================= */
 
 document
@@ -608,7 +633,7 @@ document
 
       /*
        * Només tanquem si es clica
-       * directament sobre el fons.
+       * sobre el fons.
        */
 
       if (
@@ -629,11 +654,11 @@ document
    ========================================= */
 
 /*
- * Si algú entra directament a:
+ * Si entrem directament a:
  *
- * #sp1
+ * https://aarongarcia1.github.io/ASO/#sp1
  *
- * carreguem SP1.md.
+ * carreguem automàticament SP1.md.
  */
 
 if (
