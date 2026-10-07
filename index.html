@@ -3,85 +3,526 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta
       name="description"
       content="Repositori de treballs i documentació d'Administració de Sistemes Operatius."
     >
+
     <title>ASO | Administració de Sistemes Operatius</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Llibreria per interpretar Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+      /* Documentació SP1 */
+
+      #sp1 {
+        display: none;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 80px 25px;
+      }
+
+      #sp1.visible {
+        display: block;
+      }
+
+      .markdown-content {
+        line-height: 1.7;
+      }
+
+      .markdown-content h1 {
+        font-size: 2.8rem;
+        margin-bottom: 40px;
+      }
+
+      .markdown-content h2 {
+        font-size: 2rem;
+        margin-top: 60px;
+        margin-bottom: 15px;
+      }
+
+      .markdown-content h3 {
+        font-size: 1.4rem;
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      .markdown-content p {
+        margin-bottom: 20px;
+      }
+
+      .markdown-content img {
+        display: block;
+        width: 100%;
+        max-width: 950px;
+        height: auto;
+        margin: 25px auto 50px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .markdown-content code {
+        padding: 3px 6px;
+        border-radius: 5px;
+        background: rgba(127, 127, 127, 0.15);
+      }
+
+      .sp1-header {
+        margin-bottom: 50px;
+      }
+
+      .sp1-back {
+        display: inline-block;
+        margin-bottom: 30px;
+        text-decoration: none;
+      }
+
+      .sp1-error {
+        padding: 25px;
+        border-radius: 10px;
+        background: rgba(255, 0, 0, 0.08);
+      }
+    </style>
   </head>
+
   <body>
+
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="ASO, inici">
+
+      <a class="brand" href="#projecte" aria-label="ASO, inici">
         <span class="brand-mark" aria-hidden="true">A</span>
         <span>ASO<span class="brand-period">.</span></span>
       </a>
+
       <nav aria-label="Navegació principal">
-        <a href="#projecte">El projecte</a>
-        <a href="#contingut">Contingut</a>
-        <a class="nav-link" href="SP1.html">Veure SP1 <span aria-hidden="true">↗</span></a>
+
+        <a href="#projecte">
+          El projecte
+        </a>
+
+        <a href="#contingut">
+          Contingut
+        </a>
+
+        <a class="nav-link" href="#sp1" onclick="carregarSP1()">
+          Veure SP1 <span aria-hidden="true">↗</span>
+        </a>
+
       </nav>
+
     </header>
 
+
     <main>
+
+      <!-- ========================= -->
+      <!-- PÀGINA PRINCIPAL -->
+      <!-- ========================= -->
+
       <section class="hero" id="projecte">
+
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> 2n ASIX · DOCUMENTACIÓ</p>
-          <h1>Administració de<br><span>Sistemes Operatius</span></h1>
-          <p class="intro">
-            Un espai per organitzar i consultar els treballs, les pràctiques
-            i la documentació del mòdul d'ASO.
+
+          <p class="eyebrow">
+            <span></span> 2n ASIX · DOCUMENTACIÓ
           </p>
-          <a class="button" href="SP1.html">Explora el treball SP1 <span aria-hidden="true">→</span></a>
+
+          <h1>
+            Administració de<br>
+            <span>Sistemes Operatius</span>
+          </h1>
+
+          <p class="intro">
+            Un espai per organitzar i consultar els treballs,
+            les pràctiques i la documentació del mòdul d'ASO.
+          </p>
+
+          <a
+            class="button"
+            href="#sp1"
+            onclick="carregarSP1()"
+          >
+            Explora el treball SP1
+            <span aria-hidden="true">→</span>
+          </a>
+
         </div>
+
+
         <div class="hero-art" aria-hidden="true">
+
           <div class="art-orbit orbit-one"></div>
+
           <div class="art-orbit orbit-two"></div>
+
           <div class="terminal">
-            <div class="terminal-bar"><i></i><i></i><i></i><span>aso — documentació</span></div>
-            <div class="terminal-body">
-              <p><span class="prompt">~/aso</span> <span class="command">git status</span></p>
-              <p class="terminal-muted">Documentació preparada</p>
-              <p><span class="prompt">~/aso</span> <span class="command">cat SP1.md</span></p>
-              <p class="terminal-success">✓ 14 captures · 1 treball</p>
-              <div class="terminal-cursor"></div>
+
+            <div class="terminal-bar">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span>aso — documentació</span>
             </div>
+
+            <div class="terminal-body">
+
+              <p>
+                <span class="prompt">~/aso</span>
+                <span class="command">git status</span>
+              </p>
+
+              <p class="terminal-muted">
+                Documentació preparada
+              </p>
+
+              <p>
+                <span class="prompt">~/aso</span>
+                <span class="command">cat SP1.md</span>
+              </p>
+
+              <p class="terminal-success">
+                ✓ 14 captures · 1 treball
+              </p>
+
+              <div class="terminal-cursor"></div>
+
+            </div>
+
           </div>
-          <div class="art-badge"><span>01</span><small>PRÀCTICA<br>DOCUMENTADA</small></div>
+
+          <div class="art-badge">
+            <span>01</span>
+            <small>
+              PRÀCTICA<br>
+              DOCUMENTADA
+            </small>
+          </div>
+
         </div>
+
       </section>
+
+
+      <!-- ========================= -->
+      <!-- CONTINGUT -->
+      <!-- ========================= -->
 
       <section class="content-section" id="contingut">
+
         <div class="section-heading">
+
           <div>
-            <p class="eyebrow">CONTINGUT DEL REPOSITORI</p>
-            <h2>Treballs i recursos</h2>
+
+            <p class="eyebrow">
+              CONTINGUT DEL REPOSITORI
+            </p>
+
+            <h2>
+              Treballs i recursos
+            </h2>
+
           </div>
-          <p class="section-note">Accés ràpid a la documentació i als recursos del projecte.</p>
+
+          <p class="section-note">
+            Accés ràpid a la documentació i als recursos del projecte.
+          </p>
+
         </div>
+
+
         <div class="cards">
-          <a class="card card-featured" href="SP1.html">
-            <div class="card-top"><span class="card-icon">01</span><span class="card-arrow" aria-hidden="true">↗</span></div>
-            <p class="card-label">TREBALL · SP1</p>
-            <h3>Documentació SP1</h3>
-            <p>Consulta el procés del treball explicat pas a pas amb les captures corresponents.</p>
-            <span class="card-link">Obrir document <span aria-hidden="true">→</span></span>
+
+          <!-- SP1 -->
+
+          <a
+            class="card card-featured"
+            href="#sp1"
+            onclick="carregarSP1()"
+          >
+
+            <div class="card-top">
+
+              <span class="card-icon">
+                01
+              </span>
+
+              <span class="card-arrow" aria-hidden="true">
+                ↗
+              </span>
+
+            </div>
+
+            <p class="card-label">
+              TREBALL · SP1
+            </p>
+
+            <h3>
+              Documentació SP1
+            </h3>
+
+            <p>
+              Consulta el procés del treball explicat pas a pas
+              amb les captures corresponents.
+            </p>
+
+            <span class="card-link">
+              Obrir document
+              <span aria-hidden="true">→</span>
+            </span>
+
           </a>
-          <a class="card" href="imatges/1.png">
-            <div class="card-top"><span class="card-icon card-icon-muted">IMG</span><span class="card-arrow" aria-hidden="true">↗</span></div>
-            <p class="card-label">RECURSOS</p>
-            <h3>Captures del treball</h3>
-            <p>Obre una mostra de les captures. La col·lecció completa i les explicacions són a SP1.</p>
-            <span class="card-link">Obrir una captura <span aria-hidden="true">→</span></span>
+
+
+          <!-- IMATGES -->
+
+          <a
+            class="card"
+            href="imatges/1.png"
+          >
+
+            <div class="card-top">
+
+              <span class="card-icon card-icon-muted">
+                IMG
+              </span>
+
+              <span class="card-arrow" aria-hidden="true">
+                ↗
+              </span>
+
+            </div>
+
+            <p class="card-label">
+              RECURSOS
+            </p>
+
+            <h3>
+              Captures del treball
+            </h3>
+
+            <p>
+              Obre una mostra de les captures.
+              La col·lecció completa i les explicacions són a SP1.
+            </p>
+
+            <span class="card-link">
+              Obrir una captura
+              <span aria-hidden="true">→</span>
+            </span>
+
           </a>
+
         </div>
+
       </section>
+
+
+      <!-- ========================= -->
+      <!-- SP1.MD -->
+      <!-- ========================= -->
+
+      <section id="sp1">
+
+        <div class="sp1-header">
+
+          <a
+            class="sp1-back"
+            href="#projecte"
+            onclick="tornarInici()"
+          >
+            ← Tornar a l'inici
+          </a>
+
+          <p class="eyebrow">
+            2n ASIX · SP1
+          </p>
+
+          <h2>
+            Documentació SP1
+          </h2>
+
+        </div>
+
+
+        <!-- Aquí apareixerà el contingut de SP1.md -->
+
+        <div
+          id="markdown-content"
+          class="markdown-content"
+        >
+
+          <p>
+            Carregant documentació...
+          </p>
+
+        </div>
+
+      </section>
+
     </main>
 
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+
     <footer>
-      <a class="footer-brand" href="index.html">ASO<span class="brand-period">.</span></a>
-      <p>Documentació acadèmica · 2n ASIX</p>
-      <a class="footer-top" href="#projecte">Tornar a l'inici ↑</a>
+
+      <a class="footer-brand" href="#projecte">
+        ASO<span class="brand-period">.</span>
+      </a>
+
+      <p>
+        Documentació acadèmica · 2n ASIX
+      </p>
+
+      <a
+        class="footer-top"
+        href="#projecte"
+      >
+        Tornar a l'inici ↑
+      </a>
+
     </footer>
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script>
+
+      let sp1Carregat = false;
+
+
+      async function carregarSP1() {
+
+        const seccioSP1 = document.getElementById("sp1");
+        const contingut = document.getElementById("markdown-content");
+
+        /*
+         * Mostrem la secció SP1
+         */
+
+        seccioSP1.classList.add("visible");
+
+
+        /*
+         * Ocultem la resta de la pàgina
+         */
+
+        document.getElementById("projecte").style.display = "none";
+        document.getElementById("contingut").style.display = "none";
+
+
+        /*
+         * Si ja hem carregat SP1.md,
+         * no cal tornar-lo a descarregar.
+         */
+
+        if (sp1Carregat) {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+
+          return;
+        }
+
+
+        try {
+
+          /*
+           * Agafem directament SP1.md
+           */
+
+          const resposta = await fetch("SP1.md");
+
+
+          if (!resposta.ok) {
+            throw new Error(
+              "No s'ha pogut trobar SP1.md"
+            );
+          }
+
+
+          /*
+           * Convertim el fitxer a text
+           */
+
+          const markdown = await resposta.text();
+
+
+          /*
+           * Convertim Markdown → HTML
+           */
+
+          contingut.innerHTML = marked.parse(markdown);
+
+
+          /*
+           * Marquem que ja està carregat
+           */
+
+          sp1Carregat = true;
+
+
+          /*
+           * Tornem a l'inici de la secció
+           */
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+
+        } catch (error) {
+
+          contingut.innerHTML = `
+            <div class="sp1-error">
+              <h3>Error carregant SP1.md</h3>
+              <p>
+                No s'ha pogut carregar el fitxer
+                <strong>SP1.md</strong>.
+              </p>
+              <p>
+                Comprova que SP1.md estigui a la mateixa
+                carpeta que index.html.
+              </p>
+            </div>
+          `;
+
+          console.error(error);
+
+        }
+
+      }
+
+
+      function tornarInici() {
+
+        document.getElementById("sp1").classList.remove("visible");
+
+        document.getElementById("projecte").style.display = "";
+        document.getElementById("contingut").style.display = "";
+
+      }
+
+
+      /*
+       * Si entres directament amb #sp1,
+       * també carreguem SP1.md.
+       */
+
+      if (window.location.hash === "#sp1") {
+        carregarSP1();
+      }
+
+    </script>
+
   </body>
 </html>
