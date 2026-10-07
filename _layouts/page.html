@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Documentació de {{ page.title }} del mòdul d'Administració de Sistemes Operatius."
+    >
+    <title>{{ page.title }} | ASO</title>
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="ASO, inici">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>ASO<span class="brand-period">.</span></span>
+      </a>
+      <nav aria-label="Navegació principal">
+        <a href="{{ '/' | relative_url }}">Inici</a>
+        <a class="nav-link" href="{{ '/SP1.html' | relative_url }}">Veure SP1 <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main class="document-main">
+      <a class="document-back" href="{{ '/' | relative_url }}">← Tornar a l'inici</a>
+      <section class="document-hero">
+        <p class="eyebrow"><span></span> ASO · DOCUMENTACIÓ</p>
+        <h1>{{ page.title }}<span>.</span></h1>
+        <p class="document-intro">
+          Procés del treball explicat pas a pas, amb les captures corresponents.
+        </p>
+      </section>
+      <article class="markdown-content">
+        {{ content }}
+      </article>
+    </main>
+
+    <footer>
+      <a class="footer-brand" href="{{ '/' | relative_url }}">ASO<span class="brand-period">.</span></a>
+      <p>Documentació acadèmica · 2n ASIX</p>
+      <a class="footer-top" href="#">Tornar a l'inici ↑</a>
+    </footer>
+  </body>
+</html>

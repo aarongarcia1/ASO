@@ -1,4 +1,8 @@
-# SP1
+---
+layout: page
+title: SP1
+permalink: /SP1.html
+---
 
 ## Targets
 
@@ -71,5 +75,3 @@ Aquesta imatge mostra un estat avançat del treball, amb la major part del conti
 La captura final representa el resultat del procés: un document amb totes les captures i una explicació clara del que s'ha fet.
 
 ![14](imatges/14.png)
-
-

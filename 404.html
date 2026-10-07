@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Pàgina no trobada | ASO</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      if (window.location.pathname.endsWith("/SP1.md")) {
+        window.location.replace(window.location.pathname.replace(/SP1\.md$/, "SP1.html"));
+      }
+    </script>
+  </head>
+  <body>
+    <main class="not-found">
+      <p class="eyebrow">ASO · DOCUMENTACIÓ</p>
+      <h1>Aquesta pàgina no està disponible.</h1>
+      <p>Potser buscaves la versió web de la documentació SP1.</p>
+      <a class="button" href="SP1.html">Obrir SP1 <span aria-hidden="true">→</span></a>
+      <a class="not-found-home" href="index.html">Tornar a l'inici</a>
+    </main>
+  </body>
+</html>
