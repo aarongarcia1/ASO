@@ -1,359 +1,410 @@
 <!doctype html>
 <html lang="ca">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta
-      name="description"
-      content="Repositori de treballs i documentació d'Administració de Sistemes Operatius."
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Repositori de treballs i documentació d'Administració de Sistemes Operatius."
+  >
+
+  <title>ASO | Administració de Sistemes Operatius</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Llibreria Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       CAPÇALERA
+       ========================================= -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="#projecte"
+      aria-label="ASO, inici"
     >
 
-    <title>ASO | Administració de Sistemes Operatius</title>
+      <span
+        class="brand-mark"
+        aria-hidden="true"
+      >
+        A
+      </span>
 
-    <link rel="stylesheet" href="style.css">
+      <span>
+        ASO<span class="brand-period">.</span>
+      </span>
 
-    <!-- Llibreria per interpretar Markdown -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    </a>
 
-    <style>
-      /* Documentació SP1 */
 
-      #sp1 {
-        display: none;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 80px 25px;
-      }
+    <nav aria-label="Navegació principal">
 
-      #sp1.visible {
-        display: block;
-      }
-
-      .markdown-content {
-        line-height: 1.7;
-      }
-
-      .markdown-content h1 {
-        font-size: 2.8rem;
-        margin-bottom: 40px;
-      }
-
-      .markdown-content h2 {
-        font-size: 2rem;
-        margin-top: 60px;
-        margin-bottom: 15px;
-      }
-
-      .markdown-content h3 {
-        font-size: 1.4rem;
-        margin-top: 50px;
-        margin-bottom: 10px;
-      }
-
-      .markdown-content p {
-        margin-bottom: 20px;
-      }
-
-      .markdown-content img {
-        display: block;
-        width: 100%;
-        max-width: 950px;
-        height: auto;
-        margin: 25px auto 50px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      }
-
-      .markdown-content code {
-        padding: 3px 6px;
-        border-radius: 5px;
-        background: rgba(127, 127, 127, 0.15);
-      }
-
-      .sp1-header {
-        margin-bottom: 50px;
-      }
-
-      .sp1-back {
-        display: inline-block;
-        margin-bottom: 30px;
-        text-decoration: none;
-      }
-
-      .sp1-error {
-        padding: 25px;
-        border-radius: 10px;
-        background: rgba(255, 0, 0, 0.08);
-      }
-    </style>
-  </head>
-
-  <body>
-
-    <header class="site-header">
-
-      <a class="brand" href="#projecte" aria-label="ASO, inici">
-        <span class="brand-mark" aria-hidden="true">A</span>
-        <span>ASO<span class="brand-period">.</span></span>
+      <a href="#projecte">
+        El projecte
       </a>
 
-      <nav aria-label="Navegació principal">
+      <a href="#contingut">
+        Contingut
+      </a>
 
-        <a href="#projecte">
-          El projecte
+      <a
+        class="nav-link"
+        href="#sp1"
+        onclick="carregarSP1()"
+      >
+        Veure SP1
+        <span aria-hidden="true">↗</span>
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <main>
+
+
+    <!-- =========================================
+         HERO
+         ========================================= -->
+
+    <section
+      class="hero"
+      id="projecte"
+    >
+
+      <div class="hero-copy">
+
+        <p class="eyebrow">
+          <span></span>
+          2n ASIX · DOCUMENTACIÓ
+        </p>
+
+
+        <h1>
+          Administració de<br>
+          <span>Sistemes Operatius</span>
+        </h1>
+
+
+        <p class="intro">
+          Un espai per organitzar i consultar els treballs,
+          les pràctiques i la documentació del mòdul d'ASO.
+        </p>
+
+
+        <a
+          class="button"
+          href="#sp1"
+          onclick="carregarSP1()"
+        >
+          Explora el treball SP1
+          <span aria-hidden="true">→</span>
         </a>
 
-        <a href="#contingut">
-          Contingut
-        </a>
-
-        <a class="nav-link" href="#sp1" onclick="carregarSP1()">
-          Veure SP1 <span aria-hidden="true">↗</span>
-        </a>
-
-      </nav>
-
-    </header>
+      </div>
 
 
-    <main>
 
-      <!-- ========================= -->
-      <!-- PÀGINA PRINCIPAL -->
-      <!-- ========================= -->
+      <!-- IL·LUSTRACIÓ TERMINAL -->
 
-      <section class="hero" id="projecte">
+      <div
+        class="hero-art"
+        aria-hidden="true"
+      >
 
-        <div class="hero-copy">
+        <div class="art-orbit orbit-one"></div>
 
-          <p class="eyebrow">
-            <span></span> 2n ASIX · DOCUMENTACIÓ
-          </p>
-
-          <h1>
-            Administració de<br>
-            <span>Sistemes Operatius</span>
-          </h1>
-
-          <p class="intro">
-            Un espai per organitzar i consultar els treballs,
-            les pràctiques i la documentació del mòdul d'ASO.
-          </p>
-
-          <a
-            class="button"
-            href="#sp1"
-            onclick="carregarSP1()"
-          >
-            Explora el treball SP1
-            <span aria-hidden="true">→</span>
-          </a>
-
-        </div>
+        <div class="art-orbit orbit-two"></div>
 
 
-        <div class="hero-art" aria-hidden="true">
+        <div class="terminal">
 
-          <div class="art-orbit orbit-one"></div>
+          <div class="terminal-bar">
 
-          <div class="art-orbit orbit-two"></div>
+            <i></i>
+            <i></i>
+            <i></i>
 
-          <div class="terminal">
-
-            <div class="terminal-bar">
-              <i></i>
-              <i></i>
-              <i></i>
-              <span>aso — documentació</span>
-            </div>
-
-            <div class="terminal-body">
-
-              <p>
-                <span class="prompt">~/aso</span>
-                <span class="command">git status</span>
-              </p>
-
-              <p class="terminal-muted">
-                Documentació preparada
-              </p>
-
-              <p>
-                <span class="prompt">~/aso</span>
-                <span class="command">cat SP1.md</span>
-              </p>
-
-              <p class="terminal-success">
-                ✓ 14 captures · 1 treball
-              </p>
-
-              <div class="terminal-cursor"></div>
-
-            </div>
-
-          </div>
-
-          <div class="art-badge">
-            <span>01</span>
-            <small>
-              PRÀCTICA<br>
-              DOCUMENTADA
-            </small>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ========================= -->
-      <!-- CONTINGUT -->
-      <!-- ========================= -->
-
-      <section class="content-section" id="contingut">
-
-        <div class="section-heading">
-
-          <div>
-
-            <p class="eyebrow">
-              CONTINGUT DEL REPOSITORI
-            </p>
-
-            <h2>
-              Treballs i recursos
-            </h2>
-
-          </div>
-
-          <p class="section-note">
-            Accés ràpid a la documentació i als recursos del projecte.
-          </p>
-
-        </div>
-
-
-        <div class="cards">
-
-          <!-- SP1 -->
-
-          <a
-            class="card card-featured"
-            href="#sp1"
-            onclick="carregarSP1()"
-          >
-
-            <div class="card-top">
-
-              <span class="card-icon">
-                01
-              </span>
-
-              <span class="card-arrow" aria-hidden="true">
-                ↗
-              </span>
-
-            </div>
-
-            <p class="card-label">
-              TREBALL · SP1
-            </p>
-
-            <h3>
-              Documentació SP1
-            </h3>
-
-            <p>
-              Consulta el procés del treball explicat pas a pas
-              amb les captures corresponents.
-            </p>
-
-            <span class="card-link">
-              Obrir document
-              <span aria-hidden="true">→</span>
+            <span>
+              aso — documentació
             </span>
 
-          </a>
+          </div>
 
 
-          <!-- IMATGES -->
-
-          <a
-            class="card"
-            href="imatges/1.png"
-          >
-
-            <div class="card-top">
-
-              <span class="card-icon card-icon-muted">
-                IMG
-              </span>
-
-              <span class="card-arrow" aria-hidden="true">
-                ↗
-              </span>
-
-            </div>
-
-            <p class="card-label">
-              RECURSOS
-            </p>
-
-            <h3>
-              Captures del treball
-            </h3>
+          <div class="terminal-body">
 
             <p>
-              Obre una mostra de les captures.
-              La col·lecció completa i les explicacions són a SP1.
+              <span class="prompt">
+                ~/aso
+              </span>
+
+              <span class="command">
+                git status
+              </span>
             </p>
 
-            <span class="card-link">
-              Obrir una captura
-              <span aria-hidden="true">→</span>
-            </span>
 
-          </a>
+            <p class="terminal-muted">
+              Documentació preparada
+            </p>
+
+
+            <p>
+
+              <span class="prompt">
+                ~/aso
+              </span>
+
+              <span class="command">
+                cat SP1.md
+              </span>
+
+            </p>
+
+
+            <p class="terminal-success">
+              ✓ 14 captures · 1 treball
+            </p>
+
+
+            <div class="terminal-cursor"></div>
+
+          </div>
 
         </div>
 
-      </section>
+
+        <div class="art-badge">
+
+          <span>
+            01
+          </span>
+
+          <small>
+            PRÀCTICA<br>
+            DOCUMENTADA
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
 
 
-      <!-- ========================= -->
-      <!-- SP1.MD -->
-      <!-- ========================= -->
 
-      <section id="sp1">
+    <!-- =========================================
+         CONTINGUT
+         ========================================= -->
 
-        <div class="sp1-header">
+    <section
+      class="content-section"
+      id="contingut"
+    >
 
-          <a
-            class="sp1-back"
-            href="#projecte"
-            onclick="tornarInici()"
-          >
-            ← Tornar a l'inici
-          </a>
+      <div class="section-heading">
+
+        <div>
 
           <p class="eyebrow">
-            2n ASIX · SP1
+            CONTINGUT DEL REPOSITORI
           </p>
 
           <h2>
-            Documentació SP1
+            Treballs i recursos
           </h2>
 
         </div>
 
 
-        <!-- Aquí apareixerà el contingut de SP1.md -->
+        <p class="section-note">
+          Accés ràpid a la documentació i als recursos
+          del projecte.
+        </p>
 
-        <div
-          id="markdown-content"
-          class="markdown-content"
+      </div>
+
+
+
+      <div class="cards">
+
+
+        <!-- =====================================
+             TARGETA SP1
+             ===================================== -->
+
+        <a
+          class="card card-featured"
+          href="#sp1"
+          onclick="carregarSP1()"
         >
+
+          <div class="card-top">
+
+            <span class="card-icon">
+              01
+            </span>
+
+            <span
+              class="card-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
+          </div>
+
+
+          <p class="card-label">
+            TREBALL · SP1
+          </p>
+
+
+          <h3>
+            Documentació SP1
+          </h3>
+
+
+          <p>
+            Consulta el procés del treball explicat pas a pas
+            amb les captures corresponents.
+          </p>
+
+
+          <span class="card-link">
+
+            Obrir document
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </span>
+
+        </a>
+
+
+
+        <!-- =====================================
+             TARGETA GALERIA
+             ===================================== -->
+
+        <a
+          class="card"
+          href="#captures"
+          onclick="obrirGaleria(); return false;"
+        >
+
+          <div class="card-top">
+
+            <span class="card-icon card-icon-muted">
+              IMG
+            </span>
+
+            <span
+              class="card-arrow"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+
+          </div>
+
+
+          <p class="card-label">
+            RECURSOS
+          </p>
+
+
+          <h3>
+            Captures del treball
+          </h3>
+
+
+          <p>
+            Consulta totes les captures del treball una per una
+            i navega entre elles amb els botons o lliscant.
+          </p>
+
+
+          <span class="card-link">
+
+            Obrir Captures
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         DOCUMENTACIÓ SP1
+         ========================================= -->
+
+    <section
+      id="sp1"
+      class="sp1-section"
+    >
+
+      <div class="sp1-header">
+
+        <a
+          class="sp1-back"
+          href="#projecte"
+          onclick="tornarInici()"
+        >
+          ← Tornar a l'inici
+        </a>
+
+
+        <p class="eyebrow">
+          2n ASIX · SP1
+        </p>
+
+
+        <h2>
+          Documentació SP1
+        </h2>
+
+      </div>
+
+
+      <div
+        id="markdown-content"
+        class="markdown-content"
+      >
+
+        <div class="loading">
+
+          <div class="loading-spinner"></div>
 
           <p>
             Carregant documentació...
@@ -361,168 +412,705 @@
 
         </div>
 
-      </section>
+      </div>
 
-    </main>
+    </section>
+
+  </main>
 
 
-    <!-- ========================= -->
-    <!-- FOOTER -->
-    <!-- ========================= -->
 
-    <footer>
+  <!-- =========================================
+       GALERIA DE CAPTURES
+       ========================================= -->
 
-      <a class="footer-brand" href="#projecte">
-        ASO<span class="brand-period">.</span>
-      </a>
+  <div
+    id="galeria"
+    class="galeria-overlay"
+    aria-hidden="true"
+  >
 
-      <p>
-        Documentació acadèmica · 2n ASIX
-      </p>
 
-      <a
-        class="footer-top"
-        href="#projecte"
+    <!-- BOTÓ TANCAR -->
+
+    <button
+      class="galeria-tancar"
+      onclick="tancarGaleria()"
+      aria-label="Tancar galeria"
+    >
+      ×
+    </button>
+
+
+
+    <!-- FLETXA ANTERIOR -->
+
+    <button
+      class="galeria-fletxa galeria-anterior"
+      onclick="capturaAnterior()"
+      aria-label="Captura anterior"
+    >
+      ‹
+    </button>
+
+
+
+    <!-- CONTINGUT GALERIA -->
+
+    <div class="galeria-contingut">
+
+
+      <div
+        id="galeria-numero"
+        class="galeria-numero"
       >
-        Tornar a l'inici ↑
-      </a>
-
-    </footer>
+        1 / 14
+      </div>
 
 
-    <!-- ========================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ========================= -->
 
-    <script>
+      <div
+        id="galeria-imatge-container"
+        class="galeria-imatge-container"
+      >
 
-      let sp1Carregat = false;
+        <img
+          id="galeria-imatge"
+          class="galeria-imatge"
+          src="imatges/1.png"
+          alt="Captura 1 del treball SP1"
+          draggable="false"
+        >
+
+      </div>
 
 
-      async function carregarSP1() {
 
-        const seccioSP1 = document.getElementById("sp1");
-        const contingut = document.getElementById("markdown-content");
+      <div class="galeria-controls">
+
+
+        <button
+          class="galeria-boto"
+          onclick="capturaAnterior()"
+        >
+          ← Anterior
+        </button>
+
+
+        <button
+          class="galeria-boto"
+          onclick="capturaSeguent()"
+        >
+          Següent →
+        </button>
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- FLETXA SEGÜENT -->
+
+    <button
+      class="galeria-fletxa galeria-seguent"
+      onclick="capturaSeguent()"
+      aria-label="Captura següent"
+    >
+      ›
+    </button>
+
+
+  </div>
+
+
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+
+  <footer>
+
+    <a
+      class="footer-brand"
+      href="#projecte"
+    >
+      ASO<span class="brand-period">.</span>
+    </a>
+
+
+    <p>
+      Documentació acadèmica · 2n ASIX
+    </p>
+
+
+    <a
+      class="footer-top"
+      href="#projecte"
+    >
+      Tornar a l'inici ↑
+    </a>
+
+  </footer>
+
+
+
+  <!-- =========================================
+       JAVASCRIPT
+       ========================================= -->
+
+  <script>
+
+
+    /* =========================================
+       SP1.MD
+       ========================================= */
+
+    let sp1Carregat = false;
+
+
+    async function carregarSP1() {
+
+      const seccioSP1 =
+        document.getElementById("sp1");
+
+      const contingut =
+        document.getElementById("markdown-content");
+
+
+      /*
+       * Mostrar SP1
+       */
+
+      seccioSP1.classList.add("visible");
+
+
+      /*
+       * Ocultar portada
+       */
+
+      document.getElementById("projecte")
+        .style.display = "none";
+
+      document.getElementById("contingut")
+        .style.display = "none";
+
+
+      /*
+       * Si ja està carregat,
+       * no el tornem a descarregar.
+       */
+
+      if (sp1Carregat) {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+        return;
+      }
+
+
+      try {
+
 
         /*
-         * Mostrem la secció SP1
+         * Carregar SP1.md
          */
 
-        seccioSP1.classList.add("visible");
+        const resposta =
+          await fetch("SP1.md");
 
 
-        /*
-         * Ocultem la resta de la pàgina
-         */
+        if (!resposta.ok) {
 
-        document.getElementById("projecte").style.display = "none";
-        document.getElementById("contingut").style.display = "none";
+          throw new Error(
+            "No s'ha pogut trobar SP1.md"
+          );
 
-
-        /*
-         * Si ja hem carregat SP1.md,
-         * no cal tornar-lo a descarregar.
-         */
-
-        if (sp1Carregat) {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-
-          return;
         }
 
 
-        try {
+        /*
+         * Convertir a text
+         */
 
-          /*
-           * Agafem directament SP1.md
-           */
-
-          const resposta = await fetch("SP1.md");
-
-
-          if (!resposta.ok) {
-            throw new Error(
-              "No s'ha pogut trobar SP1.md"
-            );
-          }
+        const markdown =
+          await resposta.text();
 
 
-          /*
-           * Convertim el fitxer a text
-           */
+        /*
+         * Convertir Markdown a HTML
+         */
 
-          const markdown = await resposta.text();
-
-
-          /*
-           * Convertim Markdown → HTML
-           */
-
-          contingut.innerHTML = marked.parse(markdown);
+        contingut.innerHTML =
+          marked.parse(markdown);
 
 
-          /*
-           * Marquem que ja està carregat
-           */
+        /*
+         * Corregir les rutes de les imatges
+         *
+         * SP1.md ja utilitza:
+         *
+         * imatges/1.png
+         *
+         * Per tant, no cal modificar-les.
+         */
 
-          sp1Carregat = true;
+
+        sp1Carregat = true;
 
 
-          /*
-           * Tornem a l'inici de la secció
-           */
+        /*
+         * Anar a l'inici de SP1
+         */
 
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
 
-        } catch (error) {
 
-          contingut.innerHTML = `
-            <div class="sp1-error">
-              <h3>Error carregant SP1.md</h3>
-              <p>
-                No s'ha pogut carregar el fitxer
-                <strong>SP1.md</strong>.
-              </p>
-              <p>
-                Comprova que SP1.md estigui a la mateixa
-                carpeta que index.html.
-              </p>
-            </div>
-          `;
+      } catch (error) {
 
-          console.error(error);
 
-        }
+        console.error(error);
+
+
+        contingut.innerHTML = `
+
+          <div class="sp1-error">
+
+            <h3>
+              Error carregant SP1.md
+            </h3>
+
+            <p>
+              No s'ha pogut carregar el fitxer
+              <strong>SP1.md</strong>.
+            </p>
+
+            <p>
+              Comprova que <strong>SP1.md</strong>
+              estigui a la mateixa carpeta que
+              <strong>index.html</strong>.
+            </p>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+
+    /* =========================================
+       TORNAR A L'INICI
+       ========================================= */
+
+    function tornarInici() {
+
+
+      document
+        .getElementById("sp1")
+        .classList.remove("visible");
+
+
+      document.getElementById("projecte")
+        .style.display = "";
+
+
+      document.getElementById("contingut")
+        .style.display = "";
+
+
+    }
+
+
+
+    /* =========================================
+       GALERIA
+       ========================================= */
+
+
+    const captures = [];
+
+
+    /*
+     * Tenim 14 captures
+     */
+
+    for (let i = 1; i <= 14; i++) {
+
+      captures.push(
+        `imatges/${i}.png`
+      );
+
+    }
+
+
+    let capturaActual = 0;
+
+
+
+    /*
+     * OBRIR GALERIA
+     */
+
+    function obrirGaleria() {
+
+
+      const galeria =
+        document.getElementById("galeria");
+
+
+      galeria.classList.add("activa");
+
+
+      galeria.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      capturaActual = 0;
+
+
+      actualitzarGaleria();
+
+
+      /*
+       * Impedir que la pàgina es mogui
+       * mentre la galeria està oberta.
+       */
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+
+    /*
+     * TANCAR GALERIA
+     */
+
+    function tancarGaleria() {
+
+
+      const galeria =
+        document.getElementById("galeria");
+
+
+      galeria.classList.remove("activa");
+
+
+      galeria.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+
+    /*
+     * ACTUALITZAR IMATGE
+     */
+
+    function actualitzarGaleria() {
+
+
+      const imatge =
+        document.getElementById(
+          "galeria-imatge"
+        );
+
+
+      const numero =
+        document.getElementById(
+          "galeria-numero"
+        );
+
+
+      /*
+       * Petita animació
+       */
+
+      imatge.style.opacity = "0";
+
+
+      setTimeout(function() {
+
+
+        imatge.src =
+          captures[capturaActual];
+
+
+        imatge.alt =
+          `Captura ${capturaActual + 1} del treball SP1`;
+
+
+        numero.textContent =
+          `${capturaActual + 1} / ${captures.length}`;
+
+
+        imatge.style.opacity = "1";
+
+
+      }, 100);
+
+    }
+
+
+
+    /*
+     * SEGÜENT
+     */
+
+    function capturaSeguent() {
+
+
+      capturaActual++;
+
+
+      if (
+        capturaActual >= captures.length
+      ) {
+
+        capturaActual = 0;
 
       }
 
 
-      function tornarInici() {
+      actualitzarGaleria();
 
-        document.getElementById("sp1").classList.remove("visible");
+    }
 
-        document.getElementById("projecte").style.display = "";
-        document.getElementById("contingut").style.display = "";
+
+
+    /*
+     * ANTERIOR
+     */
+
+    function capturaAnterior() {
+
+
+      capturaActual--;
+
+
+      if (capturaActual < 0) {
+
+        capturaActual =
+          captures.length - 1;
+
+      }
+
+
+      actualitzarGaleria();
+
+    }
+
+
+
+    /* =========================================
+       TECLAT
+       ========================================= */
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+
+        const galeria =
+          document.getElementById(
+            "galeria"
+          );
+
+
+        if (
+          !galeria.classList.contains(
+            "activa"
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        /*
+         * Fletxa dreta
+         */
+
+        if (
+          event.key === "ArrowRight"
+        ) {
+
+          capturaSeguent();
+
+        }
+
+
+        /*
+         * Fletxa esquerra
+         */
+
+        if (
+          event.key === "ArrowLeft"
+        ) {
+
+          capturaAnterior();
+
+        }
+
+
+        /*
+         * ESC
+         */
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          tancarGaleria();
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================================
+       SWIPE / DESLIZAR
+       ========================================= */
+
+    let touchInicialX = 0;
+
+    let touchFinalX = 0;
+
+
+    const zonaImatge =
+      document.getElementById(
+        "galeria-imatge-container"
+      );
+
+
+
+    /*
+     * Inici del moviment
+     */
+
+    zonaImatge.addEventListener(
+      "touchstart",
+      function(event) {
+
+
+        touchInicialX =
+          event.changedTouches[0]
+            .screenX;
+
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+
+    /*
+     * Final del moviment
+     */
+
+    zonaImatge.addEventListener(
+      "touchend",
+      function(event) {
+
+
+        touchFinalX =
+          event.changedTouches[0]
+            .screenX;
+
+
+        gestionarSwipe();
+
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+
+    /*
+     * Gestionar moviment
+     */
+
+    function gestionarSwipe() {
+
+
+      const diferencia =
+        touchFinalX - touchInicialX;
+
+
+      /*
+       * Deslizar cap a l'esquerra
+       * = següent
+       */
+
+      if (
+        diferencia < -50
+      ) {
+
+        capturaSeguent();
 
       }
 
 
       /*
-       * Si entres directament amb #sp1,
-       * també carreguem SP1.md.
+       * Deslizar cap a la dreta
+       * = anterior
        */
 
-      if (window.location.hash === "#sp1") {
-        carregarSP1();
+      if (
+        diferencia > 50
+      ) {
+
+        capturaAnterior();
+
       }
 
-    </script>
+    }
 
-  </body>
+
+
+    /* =========================================
+       ESCOLTAR #SP1
+       ========================================= */
+
+    if (
+      window.location.hash === "#sp1"
+    ) {
+
+      carregarSP1();
+
+    }
+
+
+  </script>
+
+
+</body>
+
 </html>
