@@ -19,7 +19,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Llibreria Markdown -->
+  <!-- Llibreria per interpretar Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 </head>
@@ -94,20 +94,30 @@
       <div class="hero-copy">
 
         <p class="eyebrow">
+
           <span></span>
+
           2n ASIX · DOCUMENTACIÓ
+
         </p>
 
 
         <h1>
+
           Administració de<br>
-          <span>Sistemes Operatius</span>
+
+          <span>
+            Sistemes Operatius
+          </span>
+
         </h1>
 
 
         <p class="intro">
+
           Un espai per organitzar i consultar els treballs,
           les pràctiques i la documentació del mòdul d'ASO.
+
         </p>
 
 
@@ -116,15 +126,22 @@
           href="#sp1"
           onclick="carregarSP1()"
         >
+
           Explora el treball SP1
-          <span aria-hidden="true">→</span>
+
+          <span aria-hidden="true">
+            →
+          </span>
+
         </a>
 
       </div>
 
 
 
-      <!-- IL·LUSTRACIÓ TERMINAL -->
+      <!-- =====================================
+           IL·LUSTRACIÓ
+           ===================================== -->
 
       <div
         class="hero-art"
@@ -137,6 +154,7 @@
 
 
         <div class="terminal">
+
 
           <div class="terminal-bar">
 
@@ -153,7 +171,9 @@
 
           <div class="terminal-body">
 
+
             <p>
+
               <span class="prompt">
                 ~/aso
               </span>
@@ -161,11 +181,14 @@
               <span class="command">
                 git status
               </span>
+
             </p>
 
 
             <p class="terminal-muted">
+
               Documentació preparada
+
             </p>
 
 
@@ -183,15 +206,19 @@
 
 
             <p class="terminal-success">
+
               ✓ 14 captures · 1 treball
+
             </p>
 
 
             <div class="terminal-cursor"></div>
 
+
           </div>
 
         </div>
+
 
 
         <div class="art-badge">
@@ -201,11 +228,14 @@
           </span>
 
           <small>
+
             PRÀCTICA<br>
             DOCUMENTADA
+
           </small>
 
         </div>
+
 
       </div>
 
@@ -222,25 +252,35 @@
       id="contingut"
     >
 
+
       <div class="section-heading">
+
 
         <div>
 
           <p class="eyebrow">
+
             CONTINGUT DEL REPOSITORI
+
           </p>
 
+
           <h2>
+
             Treballs i recursos
+
           </h2>
 
         </div>
 
 
         <p class="section-note">
+
           Accés ràpid a la documentació i als recursos
           del projecte.
+
         </p>
+
 
       </div>
 
@@ -250,7 +290,7 @@
 
 
         <!-- =====================================
-             TARGETA SP1
+             DOCUMENTACIÓ SP1
              ===================================== -->
 
         <a
@@ -259,35 +299,49 @@
           onclick="carregarSP1()"
         >
 
+
           <div class="card-top">
 
+
             <span class="card-icon">
+
               01
+
             </span>
+
 
             <span
               class="card-arrow"
               aria-hidden="true"
             >
+
               ↗
+
             </span>
+
 
           </div>
 
 
           <p class="card-label">
+
             TREBALL · SP1
+
           </p>
 
 
           <h3>
+
             Documentació SP1
+
           </h3>
 
 
           <p>
+
             Consulta el procés del treball explicat pas a pas
             amb les captures corresponents.
+
           </p>
 
 
@@ -301,12 +355,13 @@
 
           </span>
 
+
         </a>
 
 
 
         <!-- =====================================
-             TARGETA GALERIA
+             GALERIA DE CAPTURES
              ===================================== -->
 
         <a
@@ -315,35 +370,49 @@
           onclick="obrirGaleria(); return false;"
         >
 
+
           <div class="card-top">
 
+
             <span class="card-icon card-icon-muted">
+
               IMG
+
             </span>
+
 
             <span
               class="card-arrow"
               aria-hidden="true"
             >
+
               ↗
+
             </span>
+
 
           </div>
 
 
           <p class="card-label">
+
             RECURSOS
+
           </p>
 
 
           <h3>
+
             Captures del treball
+
           </h3>
 
 
           <p>
+
             Consulta totes les captures del treball una per una
             i navega entre elles amb els botons o lliscant.
+
           </p>
 
 
@@ -357,7 +426,9 @@
 
           </span>
 
+
         </a>
+
 
       </div>
 
@@ -374,28 +445,43 @@
       class="sp1-section"
     >
 
+
       <div class="sp1-header">
+
 
         <a
           class="sp1-back"
           href="#projecte"
           onclick="tornarInici()"
         >
+
           ← Tornar a l'inici
+
         </a>
 
 
         <p class="eyebrow">
+
           2n ASIX · SP1
+
         </p>
 
 
         <h2>
+
           Documentació SP1
+
         </h2>
+
 
       </div>
 
+
+
+      <!--
+        Aquí JavaScript carregarà
+        automàticament el contingut de SP1.md
+      -->
 
       <div
         id="markdown-content"
@@ -404,17 +490,24 @@
 
         <div class="loading">
 
+
           <div class="loading-spinner"></div>
 
+
           <p>
+
             Carregant documentació...
+
           </p>
+
 
         </div>
 
       </div>
 
+
     </section>
+
 
   </main>
 
@@ -431,48 +524,65 @@
   >
 
 
-    <!-- BOTÓ TANCAR -->
+    <!-- =====================================
+         BOTÓ TANCAR
+         ===================================== -->
 
     <button
       class="galeria-tancar"
       onclick="tancarGaleria()"
       aria-label="Tancar galeria"
     >
+
       ×
+
     </button>
 
 
 
-    <!-- FLETXA ANTERIOR -->
+    <!-- =====================================
+         FLETXA ANTERIOR
+         ===================================== -->
 
     <button
       class="galeria-fletxa galeria-anterior"
       onclick="capturaAnterior()"
       aria-label="Captura anterior"
     >
+
       ‹
+
     </button>
 
 
 
-    <!-- CONTINGUT GALERIA -->
+    <!-- =====================================
+         CONTINGUT GALERIA
+         ===================================== -->
 
     <div class="galeria-contingut">
 
+
+      <!-- Número de captura -->
 
       <div
         id="galeria-numero"
         class="galeria-numero"
       >
+
         1 / 14
+
       </div>
 
 
+
+      <!-- Imatge -->
 
       <div
         id="galeria-imatge-container"
         class="galeria-imatge-container"
       >
+
 
         <img
           id="galeria-imatge"
@@ -482,9 +592,12 @@
           draggable="false"
         >
 
+
       </div>
 
 
+
+      <!-- Botons -->
 
       <div class="galeria-controls">
 
@@ -493,7 +606,9 @@
           class="galeria-boto"
           onclick="capturaAnterior()"
         >
+
           ← Anterior
+
         </button>
 
 
@@ -501,24 +616,31 @@
           class="galeria-boto"
           onclick="capturaSeguent()"
         >
+
           Següent →
+
         </button>
 
 
       </div>
 
+
     </div>
 
 
 
-    <!-- FLETXA SEGÜENT -->
+    <!-- =====================================
+         FLETXA SEGÜENT
+         ===================================== -->
 
     <button
       class="galeria-fletxa galeria-seguent"
       onclick="capturaSeguent()"
       aria-label="Captura següent"
     >
+
       ›
+
     </button>
 
 
@@ -532,16 +654,21 @@
 
   <footer>
 
+
     <a
       class="footer-brand"
       href="#projecte"
     >
+
       ASO<span class="brand-period">.</span>
+
     </a>
 
 
     <p>
+
       Documentació acadèmica · 2n ASIX
+
     </p>
 
 
@@ -549,566 +676,21 @@
       class="footer-top"
       href="#projecte"
     >
+
       Tornar a l'inici ↑
+
     </a>
+
 
   </footer>
 
 
 
   <!-- =========================================
-       JAVASCRIPT
+       JAVASCRIPT EXTERN
        ========================================= -->
 
-  <script>
-
-
-    /* =========================================
-       SP1.MD
-       ========================================= */
-
-    let sp1Carregat = false;
-
-
-    async function carregarSP1() {
-
-      const seccioSP1 =
-        document.getElementById("sp1");
-
-      const contingut =
-        document.getElementById("markdown-content");
-
-
-      /*
-       * Mostrar SP1
-       */
-
-      seccioSP1.classList.add("visible");
-
-
-      /*
-       * Ocultar portada
-       */
-
-      document.getElementById("projecte")
-        .style.display = "none";
-
-      document.getElementById("contingut")
-        .style.display = "none";
-
-
-      /*
-       * Si ja està carregat,
-       * no el tornem a descarregar.
-       */
-
-      if (sp1Carregat) {
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-        return;
-      }
-
-
-      try {
-
-
-        /*
-         * Carregar SP1.md
-         */
-
-        const resposta =
-          await fetch("SP1.md");
-
-
-        if (!resposta.ok) {
-
-          throw new Error(
-            "No s'ha pogut trobar SP1.md"
-          );
-
-        }
-
-
-        /*
-         * Convertir a text
-         */
-
-        const markdown =
-          await resposta.text();
-
-
-        /*
-         * Convertir Markdown a HTML
-         */
-
-        contingut.innerHTML =
-          marked.parse(markdown);
-
-
-        /*
-         * Corregir les rutes de les imatges
-         *
-         * SP1.md ja utilitza:
-         *
-         * imatges/1.png
-         *
-         * Per tant, no cal modificar-les.
-         */
-
-
-        sp1Carregat = true;
-
-
-        /*
-         * Anar a l'inici de SP1
-         */
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-
-      } catch (error) {
-
-
-        console.error(error);
-
-
-        contingut.innerHTML = `
-
-          <div class="sp1-error">
-
-            <h3>
-              Error carregant SP1.md
-            </h3>
-
-            <p>
-              No s'ha pogut carregar el fitxer
-              <strong>SP1.md</strong>.
-            </p>
-
-            <p>
-              Comprova que <strong>SP1.md</strong>
-              estigui a la mateixa carpeta que
-              <strong>index.html</strong>.
-            </p>
-
-          </div>
-
-        `;
-
-      }
-
-    }
-
-
-
-    /* =========================================
-       TORNAR A L'INICI
-       ========================================= */
-
-    function tornarInici() {
-
-
-      document
-        .getElementById("sp1")
-        .classList.remove("visible");
-
-
-      document.getElementById("projecte")
-        .style.display = "";
-
-
-      document.getElementById("contingut")
-        .style.display = "";
-
-
-    }
-
-
-
-    /* =========================================
-       GALERIA
-       ========================================= */
-
-
-    const captures = [];
-
-
-    /*
-     * Tenim 14 captures
-     */
-
-    for (let i = 1; i <= 14; i++) {
-
-      captures.push(
-        `imatges/${i}.png`
-      );
-
-    }
-
-
-    let capturaActual = 0;
-
-
-
-    /*
-     * OBRIR GALERIA
-     */
-
-    function obrirGaleria() {
-
-
-      const galeria =
-        document.getElementById("galeria");
-
-
-      galeria.classList.add("activa");
-
-
-      galeria.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-
-      capturaActual = 0;
-
-
-      actualitzarGaleria();
-
-
-      /*
-       * Impedir que la pàgina es mogui
-       * mentre la galeria està oberta.
-       */
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-
-    /*
-     * TANCAR GALERIA
-     */
-
-    function tancarGaleria() {
-
-
-      const galeria =
-        document.getElementById("galeria");
-
-
-      galeria.classList.remove("activa");
-
-
-      galeria.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-
-    /*
-     * ACTUALITZAR IMATGE
-     */
-
-    function actualitzarGaleria() {
-
-
-      const imatge =
-        document.getElementById(
-          "galeria-imatge"
-        );
-
-
-      const numero =
-        document.getElementById(
-          "galeria-numero"
-        );
-
-
-      /*
-       * Petita animació
-       */
-
-      imatge.style.opacity = "0";
-
-
-      setTimeout(function() {
-
-
-        imatge.src =
-          captures[capturaActual];
-
-
-        imatge.alt =
-          `Captura ${capturaActual + 1} del treball SP1`;
-
-
-        numero.textContent =
-          `${capturaActual + 1} / ${captures.length}`;
-
-
-        imatge.style.opacity = "1";
-
-
-      }, 100);
-
-    }
-
-
-
-    /*
-     * SEGÜENT
-     */
-
-    function capturaSeguent() {
-
-
-      capturaActual++;
-
-
-      if (
-        capturaActual >= captures.length
-      ) {
-
-        capturaActual = 0;
-
-      }
-
-
-      actualitzarGaleria();
-
-    }
-
-
-
-    /*
-     * ANTERIOR
-     */
-
-    function capturaAnterior() {
-
-
-      capturaActual--;
-
-
-      if (capturaActual < 0) {
-
-        capturaActual =
-          captures.length - 1;
-
-      }
-
-
-      actualitzarGaleria();
-
-    }
-
-
-
-    /* =========================================
-       TECLAT
-       ========================================= */
-
-    document.addEventListener(
-      "keydown",
-      function(event) {
-
-
-        const galeria =
-          document.getElementById(
-            "galeria"
-          );
-
-
-        if (
-          !galeria.classList.contains(
-            "activa"
-          )
-        ) {
-
-          return;
-
-        }
-
-
-        /*
-         * Fletxa dreta
-         */
-
-        if (
-          event.key === "ArrowRight"
-        ) {
-
-          capturaSeguent();
-
-        }
-
-
-        /*
-         * Fletxa esquerra
-         */
-
-        if (
-          event.key === "ArrowLeft"
-        ) {
-
-          capturaAnterior();
-
-        }
-
-
-        /*
-         * ESC
-         */
-
-        if (
-          event.key === "Escape"
-        ) {
-
-          tancarGaleria();
-
-        }
-
-      }
-    );
-
-
-
-    /* =========================================
-       SWIPE / DESLIZAR
-       ========================================= */
-
-    let touchInicialX = 0;
-
-    let touchFinalX = 0;
-
-
-    const zonaImatge =
-      document.getElementById(
-        "galeria-imatge-container"
-      );
-
-
-
-    /*
-     * Inici del moviment
-     */
-
-    zonaImatge.addEventListener(
-      "touchstart",
-      function(event) {
-
-
-        touchInicialX =
-          event.changedTouches[0]
-            .screenX;
-
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-
-    /*
-     * Final del moviment
-     */
-
-    zonaImatge.addEventListener(
-      "touchend",
-      function(event) {
-
-
-        touchFinalX =
-          event.changedTouches[0]
-            .screenX;
-
-
-        gestionarSwipe();
-
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-
-    /*
-     * Gestionar moviment
-     */
-
-    function gestionarSwipe() {
-
-
-      const diferencia =
-        touchFinalX - touchInicialX;
-
-
-      /*
-       * Deslizar cap a l'esquerra
-       * = següent
-       */
-
-      if (
-        diferencia < -50
-      ) {
-
-        capturaSeguent();
-
-      }
-
-
-      /*
-       * Deslizar cap a la dreta
-       * = anterior
-       */
-
-      if (
-        diferencia > 50
-      ) {
-
-        capturaAnterior();
-
-      }
-
-    }
-
-
-
-    /* =========================================
-       ESCOLTAR #SP1
-       ========================================= */
-
-    if (
-      window.location.hash === "#sp1"
-    ) {
-
-      carregarSP1();
-
-    }
-
-
-  </script>
+  <script src="script.js"></script>
 
 
 </body>
